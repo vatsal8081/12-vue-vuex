@@ -1,0 +1,57 @@
+// intro
+
+// types of states
+
+- there are 2 type of states in vue application local state and global state. it is very important to understand and diffrenceat between both so we can easily create and manage our states in app
+
+1) local state
+- a local state in notthing but just a data, methods, and funcnality which will be use only in specific one component or mostly in first child component way props and emits this data, methods, and funcnality don't used in multiple component
+- example will be isFromInvalid data which we use to show err in userFrom component, form v-modle data which we use to bind with inputs, submit and validate methods to validate and submit form
+- hear you can see this is all things whic we do in userForm specific component and this has notthing to do with other things in our app
+
+2) global state
+- a global state is notthing but just a data, methods, and funcnality which will be use in multiple components or in entire app this data, methods, funcnality will be use in multiple parent, child and also in sibling components
+- example will be user details, cart details, add update delete cart items funcnality, we also have users list of data whic we use in UserList component, add user function which we use in AddUser component which will add data to UserList component, delete user function in deleteUser component which will delete perticulat given index user form userList which is in UserList component
+- you can see a pattern hear that local states are just inmited to one or just first child where in global state all our data, methods and funcnality will be handle and seprated in multiple components
+- hear you can see that now data in not just limited to one place it's used in multiple parts of our component so it is nessacery to update all places where we use data if we change it in any ne place to maintain state   
+
+// the problem
+
+- as your app grows and as you make biggur ans biggur apps managing state (data) in your app becomes more and more dificult because you have to share many data in diffrent parts of your app and only way to pass such data and events in to components is porps and events by it will become vary ungl and numanagable when we have to pass 10 kinds of data in very very nested apps because we have to go through all inbetween components and aslo it is possible the sibling components also need some common data and we don't have anything which will work for those kind of situations
+
+-  hear the main problem is all our data and logic to manage one kind of state is spreaded between multiple parts of our app and also still it's very hard to maintain state in our app. for example in users state users list is in uersList component, adding funcnality is in AddUser component, delete in in deleteUser component and also if we want to show this data in other place of app it's not gerenty that if we delete one item from user in usersList it will also reflact in other places where we use users list data so whit this our satate is not mangeable.
+
+- what if we have some funcnality where we can store all data, methods, and funcnality related to thos modules in sparate but one central place so if we need any data, methods, funcnality for those satate we can easily access and use in any part of our app without pass it like props and events. if we can do this all places where ue use will have same data in our entire app if any place it change it will also affact all other places withou doing any thing
+
+- ex: we are using users list in many places of our app so we can add that data in central place, add and delete is also used in many place so we can also add it in that central place now all data, methods, funcnality related to user is in one central place because of that
+
+1) we don't have to find those if diffrent components
+2) we can use all of this in any place of our app directly
+3) we can decress our component size because we saprate those funcnality in central place
+4) we don't have to change methods and funcnality in diffrent places where we use it we just change it in central place and it affact in all other places
+5) most important now we can use all those data, methods, funcnality in any component, child or deep child component also in sibling component and if any chnage happen in any part of our data all places where we use that data will automatically update.
+
+// what is vuex
+
+- a vuex is officeal state management library for vue
+- we use vuex to create such sentral place which we discuss above to create resuable central data, methods and funcnality for diffrent modules in orr app
+- vuex is library for managing global state
+- just see ue are using global sate word hear not local satate because we use vuex just for manage data, methods and funcnality which we use in multiple parts of our app not in just one or component or child component
+- if our data, methods, and funcnality is reuse in more then 2 component or it's spread accross more that 2 components then it's best to use vuex for that otherwide you can use data, computed, methods, props, emits in single of one child component.
+- a vuex is notthing but just a saprate js file where we define and alter and manage data which we use in app wide of in multiple components
+
+NOTE: keep in mind  
+
+Local State = data property, computed, methods, props, emits
+Global State = vuex
+
+ 
+
+
+// steps
+
+1) basic.vue
+2) basicTwo.vue
+3) basicThree.vue
+4) MapperHelper.vue
+5) Modules.vue
